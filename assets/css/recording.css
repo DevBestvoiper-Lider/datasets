@@ -1,0 +1,14 @@
+input#durationInSeconds {
+    margin-left: 6px;
+}
+.badge {
+    position: relative;
+    top: -10px;
+    margin-left: 5px;
+}
+#btnGetDownloadFiles, #btnGetDeleteFiles, #btnUncheckSelectedItems{
+    display: none;
+}
+.floatingButton img {
+    transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}

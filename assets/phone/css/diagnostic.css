@@ -1,0 +1,43 @@
+#offcanvasDiagnostic {
+    width: 33%; /* Ajusta el ancho según tus necesidades */
+}
+@media (max-width: 767.98px) {
+    #offcanvasDiagnostic {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+    }
+}  
+.diagnostic-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.diagnostic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+.status-green-diagnostic {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+.status-yellow-diagnostic {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+}
+.status-red-diagnostic {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+.metric-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+}

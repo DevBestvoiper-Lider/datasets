@@ -1,0 +1,126 @@
+div#offcanvasPanelAgents {
+    width: 40%;
+}
+@media (max-width: 767.98px) {
+    #offcanvasPanelAgents {
+        width: 100% !important; /* Ancho completo en pantallas pequeñas */
+    }
+}
+/* Grid container */
+.agent-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Fuerza 2 columnas */
+    gap: 1rem;
+    padding: 1rem;
+}
+/* Card styles */
+.agent-card {
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 1rem;
+}
+.agent-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.status-dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+}
+.status-online {
+    background-color: #28a745;
+    box-shadow: 0 0 4px #28a745;
+}
+.status-busy {
+    background-color: #dc3545;
+    box-shadow: 0 0 4px #dc3545;
+}
+.status-away {
+    background-color: #ffc107;
+    box-shadow: 0 0 4px #ffc107;
+}
+.agent-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.agent-actions {
+    display: none;
+    background: rgba(255,255,255,0.95);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+.agent-card:hover .agent-actions {
+    display: flex;
+    transform: translateY(0);
+}
+.filter-bar {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+.search-input {
+    border: none;
+    background: transparent;
+}
+.search-input:focus {
+    box-shadow: none;
+}
+.status-label {
+    font-size: 0.75rem;
+}
+.department-badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+}
+.user-info {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.user-info-short {
+    display: inline;
+}
+
+.user-info-full {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .user-info-short {
+        display: inline;
+    }
+
+    .user-info-full {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .user-info-short {
+        display: none;
+    }
+
+    .user-info-full {
+        display: inline;
+    }
+}

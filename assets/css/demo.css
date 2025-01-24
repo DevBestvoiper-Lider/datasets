@@ -1,0 +1,578 @@
+/*
+* demo.css
+* File include item demo only specific css only
+******************************************************************************/
+
+.menu .app-brand.demo {
+  height: 64px;
+  margin-top: 12px;
+}
+
+.app-brand-logo.demo svg {
+  width: 22px;
+  height: 38px;
+}
+
+#loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.col.app-chat-history {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%2320843f' fill-opacity='0.08'%3E%3Cpath fill-rule='evenodd' d='M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #7EB83B;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+.app-brand-text.demo {
+  font-size: 1.75rem;
+  letter-spacing: -0.5px;
+  text-transform: lowercase;
+}
+
+/* ! For .layout-navbar-fixed added fix padding top to .layout-page */
+/* Detached navbar */
+.layout-navbar-fixed .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu) .layout-page {
+  padding-top: 74px !important;
+}
+/* Default navbar */
+.layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
+  padding-top: 64px !important;
+}
+.docs-page .layout-navbar-fixed.layout-wrapper:not(.layout-without-menu) .layout-page,
+.docs-page .layout-menu-fixed.layout-wrapper:not(.layout-without-menu) .layout-page {
+  padding-top: 62px !important;
+}
+
+/* Navbar page z-index issue solution */
+.content-wrapper .navbar {
+  z-index: auto;
+}
+
+/*
+* Content
+******************************************************************************/
+
+.demo-blocks > * {
+  display: block !important;
+}
+
+.demo-inline-spacing > * {
+  margin: 1rem 0.375rem 0 0 !important;
+}
+
+/* ? .demo-vertical-spacing class is used to have vertical margins between elements. To remove margin-top from the first-child, use .demo-only-element class with .demo-vertical-spacing class. For example, we have used this class in forms-input-groups.html file. */
+.demo-vertical-spacing > * {
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.demo-vertical-spacing-lg > * {
+  margin-top: 1.875rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing-lg.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.demo-vertical-spacing-xl > * {
+  margin-top: 5rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing-xl.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.rtl-only {
+  display: none !important;
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+[dir='rtl'] .rtl-only {
+  display: block !important;
+}
+
+/* Dropdown buttons going out of small screens */
+@media (max-width: 576px) {
+  #dropdown-variation-demo .btn-group .text-truncate {
+    width: 231px;
+    position: relative;
+  }
+  #dropdown-variation-demo .btn-group .text-truncate::after {
+    position: absolute;
+    top: 45%;
+    right: 0.65rem;
+  }
+}
+
+/*
+* Layout demo
+******************************************************************************/
+
+.layout-demo-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.layout-demo-placeholder img {
+  width: 900px;
+}
+.layout-demo-info {
+  text-align: center;
+  margin-top: 1rem;
+}
+option.selectMultiple {
+  font-family: Arial, sans-serif;
+  line-height: 1;
+  font-size: 14px;
+}
+button.btn.btn-secondary.buttons-pdf.buttons-html5 {
+  margin-left: 1em;
+}
+.wide-column {
+  width: 200px; 
+}
+.wide-column-small {
+  width: 290px !important;
+}
+
+table#reportEstadisticas th {
+  font-size: 11px !important;
+  text-align: left;
+}
+
+.small-font-table th, .small-font-table td {
+  font-size: 11px !important;
+  padding: 5px;
+}
+.header-text-wrapper{
+  text-color: #676e75;
+  margin-bottom: 2px;
+}
+.progress {
+  height: 20px;
+}
+.progress-bar {
+  line-height: 20px;
+}
+.containerButtonsHelper {
+  display: none !important;
+}
+
+table#LoginOut tbody tr td{
+  padding: 4px;
+}
+/*estilos para progress Estadisticas call*/
+div.progress-container{
+  position: relative !important;
+  width: 100% !important;;
+  height: 10px !important;;
+}
+.progress-text-white {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+  font-weight: bold;
+  display: block;
+}
+
+
+
+/*botones de login - navbar asesor*/
+/* .division-hr {
+
+  height: 20px ! IMPORTANT;
+  width: 100%;
+  display: block;
+  margin-top: 1em;
+  padding-top: 2px;
+  border: none;
+  background: linear-gradient(to top, #f0f0f0, #ffffff);
+} */
+
+.btn-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+.btn-green-on {
+  color: #28a745 !important;
+}
+.btn-red-off {
+  color: #dc3545 !important;
+}
+.btn-blue-pause {
+  color: #007bff !important;
+}
+.form-select-sm {
+  width: 100px;
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #666;
+}
+div#queues {
+  width: 100%;
+}
+.scroll-wrapper{
+  border-radius: 5px;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.queue-container {
+  max-height: 190px; /* Altura máxima fija */
+  overflow-y: auto;  /* Forza el scroll vertical en todos los dispositivos */
+  padding: 0px;
+}
+
+/* Asegura el scroll en pantallas grandes también */
+@media (min-width: 768px) {
+  .queue-container {
+      max-height: 210px;
+      overflow-y: auto;
+  }
+}
+
+.queue-item {
+  background-color: #f6f6f6;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px;
+  border: 1px solid #eeecec;
+}
+.queue-item span {
+  font-size: 12px;
+  font-weight: bold;
+}
+.queue-item:hover {
+  background: #f1f1f1;
+  cursor: pointer;
+  border: 1px solid #d3d3d3;
+}
+
+/* Gradiente al final del contenedor para sugerir contenido adicional */
+/* .queue-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
+  pointer-events: none;
+} */
+
+button.btn.btn-circle.queue-btn {
+  padding: 10px;
+}
+
+
+ /* Estilos generales con sombras, bordes suaves y animaciones */
+ .custom-select {
+  position: relative;
+  width: 193px;
+  font-family: 'Arial', sans-serif;
+}
+.select-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+
+.select-trigger i {
+  margin-right: 12px;
+  color: #333;
+}
+
+.mainSelectStates {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 100;
+  transition: all 0.2s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.select-open .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mainSelectStates .dropdown-item {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.mainSelectStates .dropdown-item i {
+  margin-right: 10px;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.mainSelectStates .dropdown-item:hover {
+  transform: translateX(5px);
+}
+
+.mainSelectStates .dropdown-item:hover i {
+  color: #333;
+}
+
+/* Para una transición suave */
+.mainSelectStates {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* .config-box {
+  position: fixed;
+  left: 0;
+  bottom: 14px;
+  width: 41px;
+  height: 48px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0px 8px 8px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.config-box:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+.config-content {
+  display: none;
+  position: fixed;
+  left: 0;
+  bottom: 16px;
+  width: 280px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.config-content.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h4 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+p {
+  margin: 10px 0;
+  color: #555;
+}
+
+#close-btn {
+  margin-top: 15px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#close-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+} */
+
+
+.date-time {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currentServerTimeIcon {
+  margin-right: 10px;
+  display: none; /* Ocultar el icono inicialmente */
+}
+
+.config-box {
+  position: fixed;
+  left: 0;
+  bottom: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 0px 8px 8px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 7%);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+  background: white ! IMPORTANT;
+  border: 1px solid #e3e2e2;
+}
+
+.config-box i{
+  color: black;
+}
+
+.config-box:hover {
+  transform: scale(1.1);
+}
+.config-content {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 30%;
+  width: 259px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 6px;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 1, 1), transform 0.3s ease;
+  box-shadow: 0px -1px 2px 2px #0000000f;
+}
+
+/*pantalla mediana: monitor esleyder*/
+@media (max-height: 700px) {
+  .config-content {
+    top: 20%;
+  }
+}
+
+/*pantalla pequeña: "mac"*/
+@media (min-height: 700px) and (max-height: 900px) {
+  .config-content {
+    top: 20%;
+  }
+}
+
+@media (min-height: 900px) {
+  .config-content {
+    top: 45%;
+  }
+}
+
+.config-content.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+h4 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+p {
+  margin: 10px 0;
+  color: #555;
+}
+
+#close-btn {
+  margin-top: 15px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#close-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.non-editable {
+  background-color: #f2f2f2 !important;
+  border: 1px solid #bfbcbc !important;
+  color: #393939 !important;
+  pointer-events: none;
+  opacity: 0.7;
+}

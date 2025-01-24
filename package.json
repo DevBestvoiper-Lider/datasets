@@ -1,0 +1,55 @@
+{
+  "name": "drawflow",
+  "version": "0.0.60",
+  "description": "Simple flow library",
+  "main": "/assets/ivr/dist/drawflow.min.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development --open --host 0.0.0.0",
+    "build": "webpack --mode=production && gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jerosoler/Drawflow.git"
+  },
+  "keywords": [
+    "flow",
+    "javascript",
+    "javascript-library",
+    "flow-based-programming",
+    "flowchart"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/your/repo/issues"
+  },
+  "homepage": "https://github.com/your/repo#readme",
+  "dependencies": {
+    "axios": "^1.7.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http": "^0.0.1-security",
+    "nodemailer": "^6.9.13",
+    "path": "^0.12.7",
+    "socket.io": "^4.7.5",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^3.5.2",
+    "es-dev-server": "^2.1.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-replace": "^1.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

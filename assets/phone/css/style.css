@@ -1,0 +1,942 @@
+@charset "UTF-8";
+
+/* CSS Document */
+html,
+body {
+  padding: 0em;
+  font-family: "Open Sans", sans-serif;
+  color: #494949;
+}
+.swal2-high-zindex {
+    z-index: 99999 !important; /* Valor elevado para asegurar que siempre esté arriba */
+}
+div#wrapper .wrap {
+  width: 300px;
+}
+
+div#coordinates {
+  display: none;
+}
+
+.call-animation {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  height: 200px;
+}
+
+.phone-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  z-index: 2;
+}
+
+#incommingCallerId {
+  color: #2ecc71;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+}
+
+.phone-icon {
+  font-size: 30px;
+  color: #2ecc71;
+  margin-bottom: 5px;
+}
+
+/* Anillos de animación */
+.ring {
+  position: absolute;
+  border: 2px solid #2ecc713b;
+  border-radius: 50%;
+  animation: ringPulse 2s infinite;
+  opacity: 0;
+}
+
+.ring:nth-child(1) {
+  width: 160px;
+  height: 160px;
+  animation-delay: 0s;
+}
+
+.ring:nth-child(2) {
+  width: 160px;
+  height: 160px;
+  animation-delay: 0.7s;
+}
+
+.ring:nth-child(3) {
+  width: 160px;
+  height: 160px;
+  animation-delay: 1.4s;
+}
+
+@keyframes ringPulse {
+  0% {
+      transform: scale(1);
+      opacity: 0.5;
+  }
+  100% {
+      transform: scale(1.8);
+      opacity: 0;
+  }
+}
+
+.card-header.headerPhone {
+  text-align: left;
+  padding-left: 29px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+}
+
+.container.text-center.wrapOptionsCallFooter {
+  width: 200px;
+  padding: 0;
+  margin: auto;
+}
+.wrapOptionsCallFooter .row {
+  margin-right: 0 !important;
+  width: 100%;
+  display: block;
+}
+
+
+div#wrapLogin {
+  display: grid;
+  place-items: center;
+}
+
+/* Login */
+
+.group-form {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Estilo para el mensaje de estado */
+#statusMessage {
+  text-align: center;
+  color: #333;
+  margin-top: 10px;
+  font-size: 16px;
+}
+/*end login*/
+/* Estilos para el contenedor principal */
+#callControl {
+  display: block;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#callControl .card {
+  width: 80%;
+}
+.col.align-self-center {
+  width: 179px;
+  float: right;
+}
+
+.card-header.headerPhone p {
+  padding: 0;
+  margin: 0;
+}
+.card-header.headerPhone p#title {
+  font-size: 17px;
+}
+
+.card-header.headerPhone p#version {
+  font-size: 13px;
+  font-style: italic;
+}
+.info-status {
+  font-size: 12px;
+}
+div#padPhone {
+  padding-bottom: 5px;
+}
+#phone-options span.badge {
+  background: #e0dee3;
+  color: #585757;
+  cursor: pointer;
+  --bs-badge-padding-x: 0.593em;
+}
+.bg-incomming-call {
+  background: #dee2e6;
+}
+
+/* Estilos para el campo de entrada */
+.call-input {
+  width: 84%;
+  margin: 0 auto;
+}
+
+.call-input input {
+  width: 84%;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #adb5bd;
+}
+
+span.input-group-btn {
+  width: 10%;
+  display: inline-block;
+}
+div#to {
+  text-align: center;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.wrapInputCall {
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  margin: 0;
+}
+
+input#toField {
+  font-size: 15px;
+  padding: 4px;
+  border: 1px solid #d0caca;
+  border-radius: 2px;
+}
+
+button#btnDeleteDial {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+}
+
+button#btnDeleteDial i {
+  font-size: 23px;
+}
+
+
+#connectedCall .callInfo {
+  width: 240px;
+}
+
+#dialPad div {
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+
+  /*
+    Introduced in IE 10.
+    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+  -ms-user-select: none;
+  user-select: none;
+}
+.dialpad-char.btn-secondary-phone {
+  background: #eeeded;
+  color: #605e5e;
+}
+
+#dialPad div.btn-secondary-phone:hover {
+  background-color: #989b9f;
+  color: #fff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.callInfo h3 {
+  color: #389400;
+  margin: 10px 0 10px 0;
+}
+
+.callInfo p {
+  margin: 0px 25px 0px 0px;
+  float: left;
+}
+
+div#connectCall span {
+  text-align: center;
+  width: 100%;
+}
+
+.muteActive {
+  color: #fff;
+  background-color: #389400;
+}
+
+#dialPad {
+  height: 208px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#dialPad div {
+  width: 56px;
+  height: 40px;
+  text-align: center;
+  font-size: 15px;
+  margin: 4px 4px 0px 4px;
+  box-sizing: border-box;
+  border-radius: 7px;
+  border: 1px solid #e8e8e8;
+  padding-top: 6px;
+  font-weight: bold;
+}
+
+#dialPad div:hover {
+  background-color: #7eb83b;
+  color: #fff;
+  cursor: pointer;
+  cursor: hand;
+}
+
+#dialPad div:active {
+  background-color: #7eb83b;
+  box-shadow: 0px 1px 5px 2px rgb(124 123 123 / 45%);
+  border: none;
+}
+
+
+div#wrapOptions {
+  text-align: center;
+  margin: 16px 0em 0em 0em;
+}
+
+button#connectCall,
+#btnRejectCall {
+  width: 3em;
+  height: 3em;
+}
+
+#btnRejectCall {
+  display: none;
+}
+
+#answer .fa {
+  -webkit-animation: callp 1s;
+  animation: callp 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-play-state: running;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+
+#answer {
+  -webkit-animation: call 1s;
+  animation: call 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-play-state: running;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+
+@-webkit-keyframes call {
+  from {
+    background: #389400;
+  }
+
+  to {
+    background: #fff;
+  }
+}
+
+@keyframes call {
+  from {
+    background: #389400;
+  }
+
+  to {
+    background: #fff;
+  }
+}
+
+/* Agrega estilos CSS según sea necesario */
+.password-input-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: relative;
+  top: 40%;
+  transform: translateY(-48%);
+  cursor: pointer;
+  background: #e6e4e7;
+  padding: 8px;
+  height: 47px;
+}
+
+.wrapTitleLogout .wrapTitle,
+.wrapTitleLogout .logoutButton {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+}
+p#title {
+  display: inline-block;
+  vertical-align: top;
+  width: 85%;
+}
+
+.wrapTitleLogout .logoutButton {
+  width: 14px;
+  float: right;
+}
+
+.logoutButton {
+  background: #f8f8f8f5;
+}
+#logoutButton {
+  float: right;
+  border: none;
+  position: relative;
+  color: #606d73;
+  padding: 0;
+  background: none;
+}
+button#clearLogButton i {
+  padding: 0;
+  margin: 5px;
+}
+
+label.wrapSpy {
+  margin-top: 2em;
+  margin-left: 4px;
+  display: inline;
+  margin-right: 5px;
+}
+#clearLogButton {
+  float: left;
+  border-radius: 50%;
+  width: 2em;
+  background: #dddddd;
+  padding: 4px;
+  height: 2em;
+  color: black;
+  box-shadow: 0px 1px 0px 1px #00000026;
+  cursor: pointer;
+  margin-top: 1em;
+}
+button#clearLogButton:hover {
+  background: #c1bbbb;
+  transition: 0.3s;
+}
+
+#status {
+  padding: 10px;
+  margin: left;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+#status p {
+  padding: 0px;
+  margin: 2px;
+}
+
+.debug {
+  color: #333;
+}
+.info {
+  color: #000000;
+}
+.warn {
+  color: #ffc107;
+}
+.error {
+  color: #dc3545;
+}
+
+h7#user {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.card-header .col {
+  display: inline-block;
+  width: 48%;
+}
+.col.logs {
+  font-weight: bold;
+  position: relative;
+  top: 12px;
+}
+.card-header .col.close {
+  float: right;
+  width: 2em;
+  position: relative;
+  top: -6px;
+}
+
+.settings {
+  vertical-align: top;
+  display: inline-block;
+}
+
+button.btn-round.btn-settings {
+  width: 1.6em;
+  height: 1.6em;
+  padding: 0px;
+  margin: 0;
+  border-radius: 50%;
+}
+.btn-round {
+  border-radius: 50% !important;
+}
+button.btn-round.btn-settings i {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+.options-in-call {
+  text-align: center;
+  padding-top: 1em;
+}
+.small-btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+button#mute {
+  width: 3em;
+}
+
+.hangup-call {
+  transform: rotate(135deg);
+}
+.icon-reply {
+  transform: rotateY(180deg);
+}
+div#incomming {
+  vertical-align: top;
+  margin: 0 auto;
+  width: 100%;
+}
+.btn-green {
+  background-color: #3db13e;
+  color: #fff;
+}
+
+.btn-answer-call i {
+  -webkit-animation: callp 0.7s;
+  animation: callp 0.7s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-play-state: running;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+
+@-webkit-keyframes callp {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+.tab-content {
+  padding: 10px 20px;
+}
+.nav-tabs a {
+  border: 0!important;
+  background-color: transparent!important;
+}
+.nav-tabs li.active {
+  border-bottom: 2px solid #5453d2;
+}
+.nav-tabs li {
+  border-bottom: 2px solid transparent;
+}
+.nav-tabs li a {
+  width: 100%;
+  text-align: center;
+}
+ul.nav.nav-tabs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.nav-tabs li {
+  flex-basis: 90px;
+  min-width: 90px;
+  display: flex;
+  align-items: flex-start;
+  margin: 0!important;
+}
+.tabs-wrapper{
+position: relative;
+}
+span.left, span.right {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#5453D2;
+  border-radius: 50%;
+  left: -50px;
+  top: 8px;
+  cursor: pointer;
+  color: #ffffff;
+}
+span.right{
+right: -50px;
+left:unset;
+
+}
+.scroller-btn.inactive {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.call-list h1 {
+  color: #333;
+  font-weight: bold;
+}
+.call-item {
+  border-bottom: 1px solid #dee2e6;
+  padding: 4px 8px 8px 10px;
+}
+.call-type {
+  font-size: 20px;
+  margin-right: 10px;
+}
+.call-number {
+  font-size: 14px;
+}
+.call-time {
+  color: #6c757d;
+  font-size: 12px;
+  display: block;
+}
+span.call-message {
+  font-size: 14px;
+}
+
+.userNameExtension{
+  color: #000;
+}
+/* div#callControl .card-body {
+  padding-bottom: 10px;
+} */
+div#callControl .btn {
+  --bs-btn-padding-x: 0px !important;
+  --bs-btn-padding-y: 0px !important;
+}
+
+div#callControl .card-footer {
+  padding-top: 5px;
+}
+
+div#callControl .card-footer .container .row .col {
+  flex: 1 1 0%;
+  padding-top: 5px;
+}
+
+div#callControl .card-footer .container .row > * {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.align-self-center{
+  padding: 0;
+  text-align: right;
+}
+div#optionsInCall.align-self-center .btn {
+  --bs-btn-padding-x: 9px !important;
+  --bs-btn-padding-y: 9px !important;
+}
+div#info-micro {
+  text-align: center;
+  padding-left: 10px;
+}
+div#optionsInCall {
+  text-align: center;
+}
+
+
+ a.floatingButton img {
+  width: 1.3em;
+  height: auto;
+  text-align: center;
+  margin: 15px;
+}
+
+
+.floatingButtonWrap {
+  display: block;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 10;
+}
+
+.floatingButtonInner {
+  position: relative;
+}
+
+.floatingButton {
+  display: block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  background: linear-gradient(123deg, #7db443, #9cc860);
+  color: #fff;
+  line-height: 50px;
+  position: absolute;
+  border-radius: 50% 50%;
+  bottom: 0px;
+  right: 0px;
+  border: 5px solid #7db443;
+  /* opacity: 0.3; */
+  opacity: 1;
+  transition: all 0.4s;
+}
+
+.floatingButton .fa {
+  font-size: 15px !important;
+}
+
+.floatingButton.open,
+.floatingButton:hover,
+.floatingButton:focus,
+.floatingButton:active {
+  opacity: 1;
+  color: #fff;
+}
+
+
+.floatingButton .fa {
+  transform: rotate(0deg);
+  transition: all 0.4s;
+}
+
+.floatingButton.open .fa {
+  transform: rotate(270deg);
+}
+
+
+.floatingButtonInner .floatingMenu {
+  position: absolute;
+  bottom: 46px;
+  right: 0px;
+  width: 270px;
+  display: none;
+}
+.floatingButtonInner .floatingMenu li {
+  width: 100%;
+  float: right;
+  list-style: none;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+ul.dd-menu-header li {
+  text-align: left !important;
+}
+
+.floatingMenu li a:hover {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+
+.wrapper-transfer {
+  display: none;
+}
+
+
+.incoming-button-call {
+  padding: 8px !important;
+  display: block !important;
+}
+
+div#offcanvasConference {
+  width: 450px;
+}
+
+.input-group-custom {
+  padding: 10px;
+}
+
+.conference-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.conference-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.conference-participants {
+  list-style-type: none;
+  padding: 0;
+}
+
+.conference-participant {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-left: 4px solid transparent;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.conference-participant.active {
+  background-color: #e0e9d678;
+  border-left-color: #7eb83b;
+}
+
+.conference-participant.calling {
+  background-color: #fff3cd;
+  border-left-color: #ffc107;
+}
+
+.conference-participant-avatar {
+  width: 45px;
+  height: 45px;
+  background-color: #dee2e6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #495057;
+  margin-right: 1rem;
+  position: relative;
+}
+
+.conference-participant-status-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.conference-participant-status-badge.online {
+  background-color: #28a745;
+}
+
+.conference-participant-status-badge.calling {
+  background-color: #ffc107;
+}
+
+.conference-participant-info {
+  flex-grow: 1;
+}
+
+.conference-participant-name {
+  color: #007bff;
+  margin-bottom: 0.25rem;
+}
+
+.conference-participant-extension {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.conference-participant-timer {
+  color: #000;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+span.conference-participant-timer strong {
+  color: #23370b;
+}
+
+.conference-add-participant {
+  background-color: #f1f3f5;
+  padding: 1rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.conference-add-participant .input-group-text {
+  background-color: white;
+}
+
+.btn-end-call {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-end-call:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.conference-participant-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.conference-participant-extension {
+  color: #23370b;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.conference-participant-status {
+  margin-top: 0.25rem;
+}
+.icon-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wifi-icon {
+  font-size: 14px; /* Tamaño sutil y discreto */
+  animation: wifi-animation 2s ease-in-out infinite; /* Animación suave y fluida */
+  transform-origin: bottom center; /* El punto de animación está en la base */
+}

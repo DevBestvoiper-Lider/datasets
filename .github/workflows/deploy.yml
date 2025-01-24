@@ -1,0 +1,39 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Aquí el flujo de trabajo se ejecutará en un runner de GitHub
+
+    strategy:
+      matrix:
+        host:
+          - esleyder.bestvoiper.com  # Define los servidores a los que te quieres conectar
+          - bestcallcenterpro.bestvoiper.com
+          #- lidercompany.bestvoiper.com
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Esto obtiene el código de tu repositorio
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh  # Crea la carpeta .ssh si no existe
+          chmod 700 ~/.ssh  # Ajusta los permisos para mayor seguridad
+          # Este comando agrega la clave pública del servidor al archivo known_hosts del runner
+          ssh-keyscan -p 2022 ${{ matrix.host }} >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts  # Ajusta los permisos de known_hosts
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master  # Acción para ejecutar comandos SSH en tu servidor
+        with:
+          host: ${{ matrix.host }}  # Usa el servidor de la lista (esleyder.bestvoiper.com o bestcallcenterpro.bestvoiper.com)
+          username: esleyder  # Usuario para la conexión SSH
+          port: 2022  # Puerto SSH
+          key: ${{ secrets.SERVER_SSH_KEY }}  # La clave SSH privada almacenada en tus secretos de GitHub
+          script: /home/esleyder/deploy.sh  # El script que deseas ejecutar en el servidor
+

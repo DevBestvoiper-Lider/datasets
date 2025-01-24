@@ -1,0 +1,478 @@
+/*INFORMACIÓN DEL SISTEMA*/
+.system-info {
+    position: relative;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item i {
+    width: 24px;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.info-label {
+    color: #6c757d;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    min-width: 140px;
+}
+
+.info-value {
+    color: #2c3e50;
+}
+
+.power-controls {
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.server-icon {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+/*INFORMACIÓN DE RED*/
+
+.network-card {
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.interface-header {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.interface-stats .stat-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.interface-stats .stat-item:last-child {
+    margin-bottom: 0;
+}
+
+.interface-stats i {
+    width: 20px;
+    margin-right: 0.5rem;
+}
+
+.stat-label {
+    color: #6c757d;
+    margin-right: 0.5rem;
+}
+
+.stat-value {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.control-btn {
+    border: none;
+    padding: 0.5rem 1.25rem;
+    color: #fff;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.control-btn-shutdown {
+    background: #dc3545 !important;
+    color: #fff !important;
+}
+
+.control-btn-restart {
+    background: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.control-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+  /*SERVICIOS*/
+
+  .service-card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0,0,0,0.12);
+}
+
+.service-header {
+    position: relative;
+    text-align: center;
+}
+
+.status-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.text-success.status-dot {
+    background: #28a745;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+}
+
+.text-danger.status-dot {
+    background: #dc3545;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
+}
+
+.service-img-wrapper {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-img {
+    max-height: 100%;
+    width: auto;
+}
+
+.service-content {
+    text-align: center;
+}
+
+.service-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.04);
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.service-actions {
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.control-btn {
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    color: #6c757d;
+    flex: 1;
+    transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+    background: rgba(0,0,0,0.03);
+    color: #2c3e50;
+}
+
+.control-btn:active {
+    background: rgba(0,0,0,0.05);
+}
+
+.btn-group {
+    gap: 1px;
+    background: rgba(0,0,0,0.04);
+    padding: 1px;
+    border-radius: 6px;
+}
+/*INFORMACIÓN DE MEMORIA RAM*/
+.memory-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.memory-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.memory-header h6 {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.memory-percentage {
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.05);
+}
+
+.progress {
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+.progress-normal {
+    background-color: #eceef1;
+}
+
+.progress-warning {
+    background-color: #e74c3c;
+}
+
+.memory-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.25rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.memory-actions {
+    text-align: center;
+}
+
+.btn-outline-secondary {
+    border-color: rgba(0,0,0,0.1);
+    color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background: rgba(0,0,0,0.05);
+    border-color: rgba(0,0,0,0.15);
+    color: #2c3e50;
+}
+/*File system*/
+.filesystem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.filesystem-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+}
+
+.filesystem-card:hover {
+    transform: translateY(-2px);
+}
+
+.filesystem-header {
+    margin-bottom: 1.25rem;
+}
+
+.mount-point {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filesystem-type {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.badge {
+    font-weight: normal;
+    font-size: 0.75rem;
+}
+
+.storage-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.progress-circle-container {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+}
+
+.progress-circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.05);
+}
+
+.progress-circle::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    inset: 0;
+    background: conic-gradient(
+        var(--progress-color) calc(var(--percentage) * 1%),
+        transparent calc(var(--percentage) * 1%)
+    );
+}
+
+.progress-circle.progress-normal {
+    --progress-color: #4CAF50;
+    color: black;
+}
+
+.progress-circle.progress-warning {
+    --progress-color: #e74c3c;
+}
+
+.percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.storage-stats {
+    flex-grow: 1;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
+}
+
+.stat-label {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.stat-value {
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 0.875rem;
+}
+
+.cleanup-action .btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.cleanup-action .btn:hover {
+    background: rgba(0,0,0,0.05);
+}
+/*Información del sistema*/
+.hardware-info {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.hw-section {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.hw-section-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0,0,0,0.02);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.hw-section-header i {
+    color: #3498db;
+}
+
+.hw-section-header h6 {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.hw-details {
+    padding: 1rem;
+}
+
+.hw-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.hw-item:last-child {
+    border-bottom: none;
+}
+
+.hw-label {
+    color: #6c757d;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.hw-value {
+    color: #2c3e50;
+    font-size: 0.875rem;
+    text-align: right;
+    word-break: break-word;
+    max-width: 70%;
+}
+
+@media (min-width: 768px) {
+    .hardware-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

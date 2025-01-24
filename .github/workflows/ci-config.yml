@@ -1,0 +1,17 @@
+name: Actualizar Proyecto
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar Repositorio
+        uses: actions/checkout@v2
+
+      - name: Actualizar Proyecto
+        run: git pull origin main
