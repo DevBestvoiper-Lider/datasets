@@ -22,11 +22,16 @@ foreach ($data_datasets as $dataset) {
     // print_r($dataset);
     $audio = $datasets->ctrVerAudioDatasets($item, $valor);
 
+    $item = "id";
+    $valor = $dataset['contenido_id'];
+
+    $texto = $datasets->ctrVertexto($item, $valor);
+
     $archivo = $audio[0]['archivo_audio'] ?? "not found";
 
     $data_array[] = array(
         "id" => $dataset['id'],
-        "contenido" => $dataset['contenido'],
+        "contenido" => $texto[0]['contenido'],
         "audio" => $archivo,
     );
 }

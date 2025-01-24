@@ -49,6 +49,8 @@ class ControllersDatasets{
                         window.location = 'create-datasets';
                     }
                 });</script>";
+        } else {
+            echo "Error al subir el contenido.";
         }
     }  
 
@@ -65,6 +67,16 @@ class ControllersDatasets{
         return $respuesta;
     }
 
+    static public function ctrVertexto($item, $valor){
+        $respuesta = ModeloDatasets::mdlVertexto($item, $valor);
+        return $respuesta;
+    }
+
+    static public function ctrListarTextos(){
+        $respuesta = ModeloDatasets::mdlListarTextos();
+        return $respuesta;
+    }
+
     static public function ctrSubirContenidoDatasets($genero, $id_user, $id_datasets){
 
         $data_array = array();
@@ -75,6 +87,10 @@ class ControllersDatasets{
         // Verifica si se envió un archivo
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivo'])) {
             $file = $_FILES['archivo'];
+
+            if($id_datasets == null){
+                $id_datasets = $_POST['datasets'];
+            }
 
 
             $res_lastaudio = ModeloDatasets::mdlVerUltimoAudio($id_datasets);
@@ -108,8 +124,26 @@ class ControllersDatasets{
             $data_array = array(
                 "id_datasets" => $id_datasets,
                 "destination" => $destination,
-                'contenido' => $_POST['contenido']
+                'contenido' => $_POST['id_texto']
             );
+
+            // Validar si el texto ya existe en el dataset
+            $textoExistente = ModeloDatasets::mdlValidartexto('contenido_id', $_POST['id_texto']);
+            if (!empty($textoExistente)) {
+                echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡El texto ya existe en el dataset!',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar',
+                        closeOnConfirm: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = 'list-text';
+                        }
+                    });</script>";
+                return;
+            }
         } else {
             echo "No se recibió ningún archivo.";
         }
@@ -138,4 +172,4 @@ class ControllersDatasets{
             }
         }
     }
-} 
+}

@@ -51,6 +51,12 @@ if (session_status() == PHP_SESSION_NONE) {
                     <div class="text-truncate" data-i18n="Datasets">Datasets</div>
                 </a>
             </li>
+            <li class="menu-item " id="list-text">
+                <a href="list-text" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                    <div class="text-truncate" data-i18n="Textos Disponibles">Textos Disponibles</div>
+                </a>
+            </li>
 
 <?php } else { ?>
 

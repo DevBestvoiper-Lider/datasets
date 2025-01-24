@@ -233,6 +233,7 @@ session_start();
                 // $_GET["ruta"] == "archives-apis" ||
                 $_GET["ruta"] == "create-datasets" ||
                 $_GET["ruta"] == "ver-datasets" ||
+                $_GET["ruta"] == "list-text" ||
                 $_GET["ruta"] == "salir"
               ) {
                 include "modules/" . $_GET["ruta"] . ".php";
@@ -385,6 +386,7 @@ session_start();
     // Definir un array de rutas con sus respectivos scripts
     $scripts = [
      
+      "list-text" => "assets/js/text-list.js",
       "ver-datasets" => "assets/js/ver-datasets-list.js",
       "create-datasets" => "assets/js/app-ecommerce-category-list.js",
       "createsms" => "assets/js/createsms.js",

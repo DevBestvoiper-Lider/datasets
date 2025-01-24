@@ -1,4 +1,3 @@
-
 <?php
 
 require_once 'conexion.php';
@@ -19,6 +18,13 @@ class ModeloDatasets
         }
         $stmt->close();
         $stmt = null;
+    }
+
+    static public function mdlListarTextos(){
+        $conn = ConexionDatasets::conectar(); // Obtén la conexión PDO
+        $stmt = $conn->prepare("SELECT * FROM textos_dispo");
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
     static public function mdlContarTextos($item, $valor)
@@ -130,6 +136,38 @@ class ModeloDatasets
         $stmt = null;
     }
 
+    static public function mdlVertexto($item, $valor)
+    {
+        if ($item != null) {
+            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM textos_dispo WHERE $item = :$item");
+            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } else {
+            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM textos_dispo");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+        $stmt->close();
+        $stmt = null;
+    }
+
+    static public function mdlValidartexto($item, $valor)
+    {
+        if ($item != null) {
+            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM entradas_texto WHERE $item = :$item");
+            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } else {
+            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM textos_dispo");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+        $stmt->close();
+        $stmt = null;
+    }
+
     static public function mdlSubirContenidoDatasets($data){
         if ($data != null) {
 
@@ -141,9 +179,9 @@ class ModeloDatasets
             if ($stmt->execute()) {
                 $lastId = $conn->lastInsertId();
 
-                $stmt = $conn->prepare("INSERT INTO entradas_texto (base_datos_id, contenido, id_audio) VALUES (:base_datos_id, :contenido, :id_audio)");
+                $stmt = $conn->prepare("INSERT INTO entradas_texto (base_datos_id, contenido_id, id_audio) VALUES (:base_datos_id, :contenido_id, :id_audio)");
                 $stmt->bindParam(":base_datos_id", $data["id_datasets"], PDO::PARAM_INT);
-                $stmt->bindParam(":contenido", $data["contenido"], PDO::PARAM_STR);
+                $stmt->bindParam(":contenido_id", $data["contenido"], PDO::PARAM_STR);
                 $stmt->bindParam(":id_audio", $lastId, PDO::PARAM_INT);
 
                 if ($stmt->execute()) {
