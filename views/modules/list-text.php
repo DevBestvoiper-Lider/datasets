@@ -142,10 +142,10 @@ require_once 'models/datasets.models.php';
                         ?>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary">Guardar cambios</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
