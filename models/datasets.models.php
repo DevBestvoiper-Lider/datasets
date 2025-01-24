@@ -152,11 +152,12 @@ class ModeloDatasets
         $stmt = null;
     }
 
-    static public function mdlValidartexto($item, $valor)
+    static public function mdlValidartexto($item, $valor, $item2, $valor2)
     {
         if ($item != null) {
-            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM entradas_texto WHERE $item = :$item");
+            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM entradas_texto WHERE $item = :$item and $item2 = :$item2");
             $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+            $stmt->bindParam(":" . $item2, $valor2, PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll();
         } else {

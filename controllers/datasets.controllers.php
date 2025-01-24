@@ -128,7 +128,7 @@ class ControllersDatasets{
             );
 
             // Validar si el texto ya existe en el dataset
-            $textoExistente = ModeloDatasets::mdlValidartexto('contenido_id', $_POST['id_texto']);
+            $textoExistente = ModeloDatasets::mdlValidartexto('contenido_id', $_POST['id_texto'], 'base_datos_id', $id_datasets);
             if (!empty($textoExistente)) {
                 echo "<script>
                     Swal.fire({
