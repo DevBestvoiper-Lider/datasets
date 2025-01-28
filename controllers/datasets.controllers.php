@@ -89,7 +89,7 @@ class ControllersDatasets{
                 $id_datasets = $_POST['datasets'];
             }
 
-            $uploadDir = 'audios-datasets/' . $id_datasets . '/';
+            $uploadDir = 'audios-datasets/' . $genero . '/' . $id_user . '/' . $id_datasets . '/';
 
 
             $res_lastaudio = ModeloDatasets::mdlVerUltimoAudio($id_datasets);

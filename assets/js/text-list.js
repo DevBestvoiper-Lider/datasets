@@ -225,3 +225,54 @@ function usar(id) {
     });
     usarModal.show();
 }
+
+$(document).ready(function () {
+    $('#usarModalForm').on('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        var formData = new FormData(this);
+
+        var usarModal = bootstrap.Modal.getInstance(document.getElementById('usarModal'));
+        usarModal.hide(); // Close the modal
+
+        // Log form data for debugging
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+
+        $.ajax({
+            url: 'ajax/postDatasets.ajax.php', // Update with the actual PHP handler path
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                var res = JSON.parse(response);
+                if (res.status === "success") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: res.message,
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: res.message,
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar'
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                // Handle any errors
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al subir el contenido.',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Cerrar'
+                });
+            }
+        });
+    });
+});

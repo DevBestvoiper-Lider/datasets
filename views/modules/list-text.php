@@ -93,7 +93,7 @@ require_once 'models/datasets.models.php';
                 </div>
                 <div class="modal-body">
                     <!-- Modal body content -->
-                    <form class="pt-0" id="eCommerceCategoryListForm" role="form" method="POST" enctype="multipart/form-data">
+                    <form class="pt-0" id="usarModalForm" role="form" method="POST" enctype="multipart/form-data">
                         <!-- Title -->
                         <div class="mb-3">
                             <label class="form-label" for="ecommerce-category-title">Contenido</label>
@@ -136,10 +136,6 @@ require_once 'models/datasets.models.php';
                             <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Crear</button>
                             <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">Cancelar</button>
                         </div>
-                        <?php
-                        $crearDatasets = new ControllersDatasets();
-                        $crearDatasets->ctrSubirContenidoDatasets($genero, $id_user, $id_datasets);
-                        ?>
                     </form>
                 </div>
                 <!-- <div class="modal-footer">
