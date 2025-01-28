@@ -81,9 +81,6 @@ class ControllersDatasets{
 
         $data_array = array();
 
-        // Directorio donde se guardarán los archivos subidos
-        $uploadDir = 'audios-datasets/' . $genero . '/' . $id_user . '/' . $id_datasets . '/';
-
         // Verifica si se envió un archivo
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['archivo'])) {
             $file = $_FILES['archivo'];
@@ -91,6 +88,8 @@ class ControllersDatasets{
             if($id_datasets == null){
                 $id_datasets = $_POST['datasets'];
             }
+
+            $uploadDir = 'audios-datasets/' . $id_datasets . '/';
 
 
             $res_lastaudio = ModeloDatasets::mdlVerUltimoAudio($id_datasets);
@@ -164,7 +163,7 @@ class ControllersDatasets{
                         closeOnConfirm: false
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location = 'ver-datasets?" . "id_datasets=". $id_datasets . "&genero=" . $genero . "';
+                            window.location = 'list-text';
                         }
                     });</script>";
             } else {
