@@ -232,9 +232,6 @@ $(document).ready(function () {
 
         var formData = new FormData(this);
 
-        var usarModal = bootstrap.Modal.getInstance(document.getElementById('usarModal'));
-        usarModal.hide(); // Close the modal
-
         // Log form data for debugging
         for (var pair of formData.entries()) {
             console.log(pair[0] + ': ' + pair[1]);
@@ -254,6 +251,13 @@ $(document).ready(function () {
                         title: res.message,
                         showConfirmButton: true,
                         confirmButtonText: 'Cerrar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            var usarModal = bootstrap.Modal.getInstance(document.getElementById('usarModal'));
+                            usarModal.hide(); // Close the modal
+                            $('#usarModalForm')[0].reset(); // Clear the form
+                            window.location = 'list-text';
+                        }
                     });
                 } else {
                     Swal.fire({

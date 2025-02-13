@@ -34,6 +34,7 @@ require_once 'models/datasets.models.php';
                           <th></th>
                           <th></th>
                           <th>Texto</th>
+                          <th>Status</th>
                           <th class="text-nowrap text-sm-end">Audio</th>
                           <th class="text-lg-center">Actions</th>
                         </tr>
@@ -148,3 +149,39 @@ require_once 'models/datasets.models.php';
     <script>
       var id_datasets = <?php echo $_GET['id_datasets']; ?>;
     </script>
+
+
+  <!-- Offcanvas to add new user -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEditUser" aria-labelledby="offcanvasEditUserLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Editar Frase</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body mx-0">
+      <form class="add-new-user pt-0" id="editAudioForm" role="form" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <input type="text" id="texto_id" class="form-control" placeholder="" name="idAudio" aria-label="Id Texto">
+          <label class="form-label" for="add-user-fullname">Observacion</label>
+          <textarea class="form-control" id="add-user-fullname" placeholder="Observacion..." name="observacion" aria-label="Observacion"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="Accion">Accion</label>
+          <select id="Accion" name="status" class="select2 form-select">
+            <option value="">Seleccionar</option>
+            <option value="1">Aprobar</option>
+            <option value="2">Desaprobar</option>
+          </select>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Guardar</button>
+            <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">Cancelar</button>
+        </div>
+      
+        <?php
+          $editarTexto = new ControllersDatasets();
+          $editarTexto->ctrSubirObservacionAudio($id_datasets, $genero);
+        ?>
+      
+      </form>
+    </div>
+  </div>

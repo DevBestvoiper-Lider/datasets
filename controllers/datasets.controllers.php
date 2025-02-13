@@ -61,6 +61,7 @@ class ControllersDatasets{
         $respuesta = ModeloDatasets::mdlListarDatasDatasets($item, $valor);
         return $respuesta;
     }
+    
 
     static public function ctrVerAudioDatasets($item, $valor){
         $respuesta = ModeloDatasets::mdlVerAudioDatasets($item, $valor);
@@ -148,7 +149,7 @@ class ControllersDatasets{
         }
 
         // Limpia $_POST después de procesarlo
-        $_POST = [];
+        // $_POST = [];
 
         if (isset($destination)) {
             $respuesta = ModeloDatasets::mdlSubirContenidoDatasets($data_array);
@@ -170,5 +171,57 @@ class ControllersDatasets{
                 echo "Error al subir el contenido.";
             }
         }
+    }
+
+    static public function ctrSubirObservacionAudio($id_datasets, $genero){
+
+        // Verifica si se envió un archivo
+
+         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $data_array = array();
+
+            if ($_POST['observacion'] != null) {
+                $observacion = $_POST['observacion'];
+            } else {
+                $observacion = "Sin observacion";
+            }
+
+            $data_array = array(
+                "id_audio" => $_POST['idAudio'],
+                "obs" => $observacion,
+                'status' => $_POST['status']
+            );
+
+            print_r($data_array);
+
+        
+
+        // // Limpia $_POST después de procesarlo
+        $_POST = [];
+
+        if (isset($data_array)) {
+            $respuesta = ModeloDatasets::mdlSubirObservacionAudio($data_array);
+
+            if ($respuesta == "OK") {
+                echo "<script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡El contenido ha sido subido correctamente!',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cerrar',
+                        closeOnConfirm: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = 'ver-datasets?id_datasets=" . $id_datasets . "genero=" . $genero . "' ;
+                        }
+                    });</script>";
+            } else {
+                echo "Error al subir el contenido.";
+            }
+        }
+
+    }
+    
     }
 }

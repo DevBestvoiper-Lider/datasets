@@ -34,7 +34,12 @@ $(function () {
   }
 
   // Variable declaration for category list table
-  var dt_category_list_table = $('.datatables-category-list');
+  var dt_category_list_table = $('.datatables-category-list'),
+    statusObj = {
+      3: { title: 'Pendiente', class: 'bg-label-warning' },
+      1: { title: 'Aprobado', class: 'bg-label-success' },
+      2: { title: 'Desaprobado', class: 'bg-label-danger' }
+    };
 
   //select2 for dropdowns in offcanvas
 
@@ -66,6 +71,7 @@ $(function () {
         { data: '' },
         { data: 'id' },
         { data: 'contenido' },
+        { data: 'status' },
         { data: 'audio' },
         { data: '' }
       ],
@@ -102,6 +108,12 @@ $(function () {
           render: function (data, type, full, meta) {
             var $name = full['contenido'];
 
+            if (full['obs'] != null) {
+              var $observaciones = '<small class="text-muted">Observacion: ' + full['obs'] + '</small>';
+            } else {
+              var $observaciones = '';
+            }
+
             var $url_verdatasets = 'ver-datasets?id_datasets=' + full['id'];
             // Creates full output for Categories and Category Detail
             var $row_output =
@@ -112,15 +124,29 @@ $(function () {
               '<span class="text-body text-wrap fw-medium">' +
               $name +
               '</span>' +
+              $observaciones +
               '</div>' +
               '</div>';
             return $row_output;
           }
         },
+
         {
-          // Genero
+          // Categories and Category Detail
           targets: 3,
           responsivePriority: 3,
+          render: function (data, type, full, meta) {
+            var $status = full['status'];
+            // Creates full output for Categories and Category Detail
+            return '<span class="badge ' + statusObj[$status].class + '">' + statusObj[$status].title + '</span>';
+
+          }
+        },
+
+        {
+          // Genero
+          targets: 4,
+          responsivePriority: 4,
           render: function (data, type, full, meta) {
             var $audio = full['audio'];
             var $genero = "<audio controls><source src='" + $audio + "' type='audio/mpeg'>Tu navegador no soporta el elemento de audio.</audio>";
@@ -137,7 +163,7 @@ $(function () {
             return (
               '<div class="d-flex align-items-sm-center justify-content-sm-center">' +
               '<button class="btn btn-sm btn-icon delete-record me-2"><i class="bx bx-trash"></i></button>' +
-              '<button class="btn btn-sm btn-icon"><i class="bx bx-edit"></i></button>' +
+              '<button class="btn btn-sm btn-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditUser" onclick="usartexto(' + full["idAudio"] + ')"><i class="bx bx-edit"></i></button>' +
               '</div>'
             );
           }
@@ -202,7 +228,38 @@ $(function () {
             return data ? $('<table class="table"/><tbody />').append(data) : false;
           }
         }
+      },
+
+      initComplete: function () {
+        this.api()
+          .columns(3)
+          .every(function () {
+            var column = this;
+            var select = $(
+              '<select id="FilterTransaction" class="form-select text-capitalize"><option value=""> Select Status </option></select>'
+            )
+              .appendTo('.user_status')
+              .on('change', function () {
+                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                column.search(val ? '^' + val + '$' : '', true, false).draw();
+              });
+
+            column
+              .data()
+              .unique()
+              .sort()
+              .each(function (d, j) {
+                select.append(
+                  '<option value="' +
+                  statusObj[d].title +
+                  '" class="text-capitalize">' +
+                  statusObj[d].title +
+                  '</option>'
+                );
+              });
+          });
       }
+
     });
     $('.dataTables_length').addClass('mt-0 mt-md-3');
     $('.dt-action-buttons').addClass('pt-0');
@@ -220,3 +277,64 @@ $(function () {
     $('.dataTables_length .form-select').removeClass('form-select-sm');
   }, 300);
 });
+
+function usartexto(id) {
+  // Set the text ID in the placeholder
+  var textoIdInput = document.getElementById('texto_id');
+  textoIdInput.placeholder = id;
+  textoIdInput.value = id;
+  textoIdInput.readOnly = true;
+}
+
+function actionAudio(status, Audio) {
+  console.log("Selected action:", status);
+  console.log("Selected Audio:", Audio);
+
+
+  // // Datos que quieres enviar
+  // var datos = {
+  //   value: value,
+  //   action: "actionAudio",
+  //   IdAudio: IdAudio
+  // };
+
+  // $.ajax({
+  //   url: "ajax/app-users-update.php",
+  //   type: "POST",
+  //   contentType: "application/json",
+  //   data: JSON.stringify(datos),
+  //   success: function (response) {
+  //     // Acciones a realizar cuando la solicitud ha tenido éxito
+
+  //     // Obtener el valor de la variable almacenada en localStorage
+  //     var verticalMenuStyle = localStorage.getItem("templateCustomizer-vertical-menu-template--Style");
+
+  //     // Verificar si la variable tiene un valor
+  //     if (verticalMenuStyle == "dark") {
+  //       var backgroundColor = "#2b2c40";
+  //       var Color = "#fff";
+  //     } else {
+  //       var backgroundColor = "#fff";
+  //     }
+
+
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "¡estado chat modificado!",
+  //       text: "",
+  //       color: Color,
+  //       background: backgroundColor,
+  //       confirmButtonText: "Aceptar"
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         window.location.reload();
+  //       }
+  //     });
+
+  //   },
+  //   error: function (xhr, status, error) {
+  //     // Acciones a realizar en caso de error
+  //     console.error("Error al hacer la solicitud:", error);
+  //   }
+  // });
+}
