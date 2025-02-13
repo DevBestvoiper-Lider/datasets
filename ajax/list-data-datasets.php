@@ -27,7 +27,10 @@ foreach ($data_datasets as $dataset) {
 
     $texto = $datasets->ctrVertexto($item, $valor);
 
-    $archivo = "http://158.69.158.91/" . ($audio[0]['archivo_audio'] ?? "not found");
+
+    $archivo = $audio[0]['archivo_audio'] ?? "not found";
+
+    // $archivo = "http://158.69.158.91/" . ($audio[0]['archivo_audio'] ?? "not found");
 
     $data_array[] = array(
         "id" => $dataset['id'],
