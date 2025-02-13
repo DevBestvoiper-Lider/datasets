@@ -213,7 +213,7 @@ class ControllersDatasets{
                         closeOnConfirm: false
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location = 'ver-datasets?id_datasets=" . $id_datasets . "genero=" . $genero . "' ;
+                            window.location = 'ver-datasets?id_datasets=" . $id_datasets . "&genero=" . $genero . "' ;
                         }
                     });</script>";
             } else {
