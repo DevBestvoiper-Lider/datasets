@@ -207,6 +207,7 @@ tramp
 # cask packages
 .cask/
 dist/
+/audios-datasets/
 
 # Flycheck
 flycheck_*.el

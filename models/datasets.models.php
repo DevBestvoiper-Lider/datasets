@@ -84,7 +84,7 @@ class ModeloDatasets
     static public function mdlListarDatasDatasets($item, $valor)
     {
         if ($item != null) {
-            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM entradas_texto WHERE $item = :$item LIMIT 10");
+            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM entradas_texto WHERE $item = :$item");
             $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -136,19 +136,21 @@ class ModeloDatasets
         $stmt = null;
     }
 
-    static public function mdlSubirObservacionAudio($data_array) {
-        $stmt = ConexionDatasets::conectar()->prepare("UPDATE audios SET obs = :obs, status = :status WHERE id = :id_audio");
-
-        $stmt->bindParam(":obs", $data_array["obs"], PDO::PARAM_STR);
-        $stmt->bindParam(":status", $data_array["status"], PDO::PARAM_INT);
-        $stmt->bindParam(":id_audio", $data_array["id_audio"], PDO::PARAM_INT);
-
-        if ($stmt->execute()) {
-            return "OK";
+    static public function mdlSubirObservacionAudio($data) {
+        if ($data != null) {
+            $conn = ConexionDatasets::conectar(); // Obtén la conexión PDO
+            $stmt = $conn->prepare("UPDATE audios SET obs = :obs, status = :status WHERE id = :id"); // Cambia AND por una coma
+            $stmt->bindParam(":obs", $data["obs"], PDO::PARAM_STR);
+            $stmt->bindParam(":status", $data["status"], PDO::PARAM_INT);
+            $stmt->bindParam(":id", $data["id_audio"], PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                return "OK";
+            } else {
+                return "ERROR";
+            }
         } else {
-            return "error";
+            return "ERROR";
         }
-
         $stmt->close();
         $stmt = null;
     }

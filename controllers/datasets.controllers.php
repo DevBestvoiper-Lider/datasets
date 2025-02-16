@@ -193,35 +193,31 @@ class ControllersDatasets{
                 'status' => $_POST['status']
             );
 
-            print_r($data_array);
+            // Limpia $_POST después de procesarlo
+            $_POST = [];
 
-        
+            if (isset($data_array)) {
+                $respuesta = ModeloDatasets::mdlSubirObservacionAudio($data_array);
 
-        // // Limpia $_POST después de procesarlo
-        $_POST = [];
-
-        if (isset($data_array)) {
-            $respuesta = ModeloDatasets::mdlSubirObservacionAudio($data_array);
-
-            if ($respuesta == "OK") {
-                echo "<script>
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡El contenido ha sido subido correctamente!',
-                        showConfirmButton: true,
-                        confirmButtonText: 'Cerrar',
-                        closeOnConfirm: false
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location = 'ver-datasets?id_datasets=" . $id_datasets . "&genero=" . $genero . "' ;
-                        }
-                    });</script>";
-            } else {
-                echo "Error al subir el contenido.";
+                if ($respuesta == "OK") {
+                    echo "<script>
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡El contenido ha sido subido correctamente!',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location = 'ver-datasets?id_datasets=" . $id_datasets . "&genero=" . $genero . "' ;
+                            }
+                        });</script>";
+                } else {
+                    echo "Error al subir el contenido.";
+                }
             }
-        }
 
-    }
+        }
     
     }
 }

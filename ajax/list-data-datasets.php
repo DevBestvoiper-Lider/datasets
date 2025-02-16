@@ -9,7 +9,7 @@ $datasets = new ControllersDatasets();
 
 $data_array = array();
 
-$item = "usuario_id";
+$item = "base_datos_id";
 $valor = $_POST['idDataset'] ?? null;
 
 $data_datasets = $datasets->ctrListarDatasDatasets($item, $valor);
