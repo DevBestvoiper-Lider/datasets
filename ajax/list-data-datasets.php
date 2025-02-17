@@ -34,6 +34,7 @@ foreach ($data_datasets as $dataset) {
 
     $data_array[] = array(
         "id" => $dataset['id'],
+        "contenido_id" => $dataset['contenido_id'],
         "contenido" => $texto[0]['contenido'],
         "idAudio" => $audio[0]['id'],
         "obs" => $audio[0]['obs'],

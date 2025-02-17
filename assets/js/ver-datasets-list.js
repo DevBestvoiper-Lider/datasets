@@ -70,6 +70,7 @@ $(function () {
         // columns according to JSON
         { data: '' },
         { data: 'id' },
+        { data: 'contenido_id' },
         { data: 'contenido' },
         { data: 'status' },
         { data: 'audio' },
@@ -106,6 +107,26 @@ $(function () {
           targets: 2,
           responsivePriority: 2,
           render: function (data, type, full, meta) {
+            var $name = full['contenido_id'];
+            // Creates full output for Categories and Category Detail
+            var $row_output =
+              '<div class="d-flex align-items-center">' +
+              '<div class="avatar-wrapper me-2 rounded-2 bg-label-secondary">' +
+              '</div>' +
+              '<div class="d-flex flex-column justify-content-center">' +
+              '<span class="text-body text-wrap fw-medium">' +
+              $name +
+              '</span>' +
+              '</div>' +
+              '</div>';
+            return $row_output;
+          }
+        },
+        {
+          // Categories and Category Detail
+          targets: 3,
+          responsivePriority: 3,
+          render: function (data, type, full, meta) {
             var $name = full['contenido'];
 
             if (full['obs'] != null) {
@@ -133,8 +154,8 @@ $(function () {
 
         {
           // Categories and Category Detail
-          targets: 3,
-          responsivePriority: 3,
+          targets: 4,
+          responsivePriority: 4,
           render: function (data, type, full, meta) {
             var $status = full['status'];
             // Creates full output for Categories and Category Detail
@@ -145,8 +166,8 @@ $(function () {
 
         {
           // Genero
-          targets: 4,
-          responsivePriority: 4,
+          targets: 5,
+          responsivePriority: 5,
           render: function (data, type, full, meta) {
             var $audio = full['audio'];
             var $genero = "<audio controls><source src='" + $audio + "' type='audio/mpeg'>Tu navegador no soporta el elemento de audio.</audio>";

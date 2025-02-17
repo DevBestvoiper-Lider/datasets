@@ -84,7 +84,7 @@ class ModeloDatasets
     static public function mdlListarDatasDatasets($item, $valor)
     {
         if ($item != null) {
-            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM entradas_texto WHERE $item = :$item");
+            $stmt = ConexionDatasets::conectar()->prepare("SELECT * FROM entradas_texto WHERE $item = :$item ORDER BY contenido_id DESC");
             $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll();

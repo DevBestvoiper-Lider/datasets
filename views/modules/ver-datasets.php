@@ -33,6 +33,7 @@ require_once 'models/datasets.models.php';
                         <tr>
                           <th></th>
                           <th></th>
+                          <th>Id</th>
                           <th>Texto</th>
                           <th>Status</th>
                           <th class="text-nowrap text-sm-end">Audio</th>
